@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+        <title>{% block title %}Florărie{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            <h1>Pastel Garden</h1>
+            <p>Flori alese cu drag pentru fiecare moment</p>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'acasa' %}">Pagina principală</a>
+                        <ul>
+                            <li><a href="{% url 'acasa' %}#bun-venit">Bun venit</a></li>
+                            <li><a href="{% url 'acasa' %}#noutati">Noutăți</a></li>
+                            <li><a href="{% url 'acasa' %}#promotii">Promoții</a></li>
+                            <li><a href="{% url 'acasa' %}#flori-sezon">Flori de sezon</a></li>
+                            <li><a href="{% url 'acasa' %}#evenimente">Evenimente</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'despre' %}">Despre</a>
+                        <ul>
+                            <li><a href="{% url 'despre' %}#poveste">Povestea florăriei</a></li>
+                            <li><a href="{% url 'despre' %}#valori">Misiune și valori</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'istoric' %}">Istoric</a></li>
+                    <li><a href="{% url 'produse' %}">Produse</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'cos_virtual' %}">Coș virtual</a></li>
+
+                </ul>
+            </nav>
+        </header>       
+        <main>
+            {% block content %}{% endblock %}
+            {% if messages %}
+                <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+    </ul>
+{% endif %}
+
+        </main>
+        <footer>
+            <p>&copy; {{ firma.an_infiintare }}-2026 {{ firma.nume }}. </p>
+            <p>Telefon: {{ firma.telefon }}</p>
+            <p>Adresă: {{ firma.adresa }}</p>
+            <p>Email: {{ firma.email }}</p>
+            <p>Program: {{ firma.program }}</p>
+            <p>IP-ul utilizatorului: {{ request.ip }}</p>
+        </footer>
+    </body>
+</html>

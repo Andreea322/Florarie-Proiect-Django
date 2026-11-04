@@ -1,0 +1,10 @@
+{% extends "baza.html" %}
+{% load static %}
+
+{% block title %}Pagina principală{% endblock %}
+
+{% block content %}
+    <h1>Proiectul va consta în magazinul online al unei florării. Acesta va avea coș de cumpărături, funcția de a pune produsele la favorite, cont de utilizator etc.</h1>
+    <p>{{ id }}</p>
+    <img src="{% static 'imagini/acasa.jpg' %}">
+{% endblock %}
